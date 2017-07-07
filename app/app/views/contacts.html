@@ -1,0 +1,31 @@
+<div class="ui {{load}} segment h100" style="overflow: scroll;" id="parent">
+    <table class="ui  very compact striped table full">
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <div class="ui label">
+                        <i class="mail icon"></i> <span ng-bind="contactsSize"></span>
+                        <span class="detail">Contacts</span>
+                    </div>
+                </th>
+
+                <th colspan="2">
+                    <div class="right aligned">
+                        <a class="ui red label" ng-click="SaveContacts()">
+                            <i class="save icon"></i> Save
+                        </a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody infinite-scroll="increaseLimit()" infinite-scroll-container='"#parent"'>
+            <tr ng-repeat="contact in contactsList | limitTo:barLimit">
+                <td ng-bind="contact.name"></td>
+                <td></td>
+                <td ng-bind="contact.phoneNo"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

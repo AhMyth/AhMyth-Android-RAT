@@ -1,0 +1,120 @@
+/*
+
+Preserves orignal formatting
+
+ */
+/* declarations can exist inside atrules */
+@font-face {
+  font-family: 'Test font';
+}
+
+/* comment before rule */
+body/* comment after rule name */{
+    /* comment before decl */
+    padding /*  comment after prop */ : /*  comment before val */ 0 /*  comment after val */ 1px /* another comment */ 2px /* one more */ 3px /* last one*/;
+    /* comment after decl */
+
+    margin:
+        0 /*top*/
+        1px /*right
+        multi-line
+        comment
+        */
+        2px /*bottom*/
+        3px /*left*/;
+
+    border-left/*  comment after prop */: none;
+}
+
+/* empty options forces defaults */
+/*rtl:begin:options: {}*/
+/* should not process urls - default */
+@import url("rtl-right-east.css");
+/*rtl:end:options*/
+
+/*rtl:begin:config:
+{
+    "options":{
+        "autoRename": true,
+        "stringMap":[
+            {
+            "name"    : "prev-next",
+            "search"  : ["prev", "Prev", "PREV"],
+            "replace" : ["next", "Next", "NEXT"],
+            "options" : {"ignoreCase":false}
+            }
+        ]
+    },
+    "plugins":[
+      {
+        "name": "test",
+        "directives":{
+          "control": {},
+          "value": []
+        },
+        "processors": [
+          {
+            "name": "content",
+            "expr": /content/im,
+            "action": function (prop, value, cxt) {
+              if (value === '"A"') {
+                return { 'prop': prop, 'value': '"ABC"' }
+              } else if (value === '"ABC"') {
+                return { 'prop': prop, 'value': '"A"' }
+              }
+              return { 'prop': prop, 'value': value }
+            }
+          }
+        ]
+      }
+    ]
+}*/
+div:before { content: "A";} div:after { content: "ABC";}
+
+.demo-prev, .demo-Prev, .demo-PREV { content: 'p'; }
+.demo-next, .demo-Next, .demo-NEXT { content: 'n'; }
+
+/*rtl:end:config*/
+
+/*!rtl:begin:remove*/
+@import url(/test.css);
+i {
+  color: blue;  
+}
+/*rtl:end:remove*/
+
+
+div {
+  /*rtl:remove*/
+  direction: rtl;
+  text-align: right;
+  padding: 10px;
+}
+
+/*rtl:begin:ignore*/
+.sample {
+    text-align: left;
+}
+/*rtl:end:ignore*/
+
+
+/*rtl:begin:options:{"autoRename":false, "clean": false}*/
+.right { display:inline;}
+/*rtl:begin:options:{"autoRename":true, "greedy": true}*/
+.bright { display:inline;}
+/*rtl:end:options*/
+.brighter { display:inline;}
+/*rtl:end:options*/
+
+/* auto rename only if a pair exists */
+
+/*rtl:begin:options:{"autoRename":true, "autoRenameStrict": true}*/
+
+/* The following should not be renamed */
+.ltr{ display: inline-flex;}
+
+/* But these should */
+.right{ display: inline-flex;}
+.left { display: block;}
+
+/*rtl:end:options*/

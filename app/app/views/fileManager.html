@@ -1,0 +1,15 @@
+<div class="ui segment {{load}} full" style="overflow-y:auto;overflow-x: auto;white-space:nowrap;" id="parent">
+    <div class="ui list" style="overflow-y:auto;white-space:nowrap;" infinite-scroll="increaseLimit()" infinite-scroll-container='"#parent"'>
+        <div class="item" ng-repeat="file in files | limitTo:barLimit | orderBy:['-isDir','name']">
+
+            <a ng-click="getFiles(file.path)" ng-if="file.isDir">
+                <i class="folder icon"></i> {{file.name}}
+            </a>
+            <div class="ui label" ng-if="!file.isDir">
+                <i class="file icon"></i> {{file.name}} &nbsp;&nbsp;
+                <a ng-click="saveFile(file.path)"><i class="save red icon"></i></a>
+            </div>
+
+        </div>
+    </div>
+</div>

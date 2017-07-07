@@ -1,0 +1,50 @@
+<div class="ui top attached tabular menu">
+    <a class="item active" data-tab="sendSms">Send SMS</a>
+    <a class="item" data-tab="smsList" ng-click="getSMSList()">SMS List</a>
+</div>
+<div class="ui bottom attached tab segment active h90 center aligned" data-tab="sendSms">
+    <br>
+    <div class="ui labeled input">
+        <div class="ui label">
+            TO://
+        </div>
+        <input type="text" ng-model="phoneNo" placeholder="Phone Number">
+    </div>
+    <br>
+    <label>Message :</label>
+    <br>
+    <textarea class="w100 h40" ng-model="msg" placeholder="Message to send.."></textarea>
+    <br>
+    <br>
+    <button class="ui labeled icon red button" ng-click="SendSMS(phoneNo,msg)"> <i class="send outline icon"></i>SEND</button>
+
+</div>
+<div class="ui bottom attached tab {{load}} segment h90" data-tab="smsList" style="overflow: scroll;" id="parent">
+    <table class="ui very compact striped table">
+        <thead>
+            <tr>
+                <th>
+                    <div class="ui label">
+                        <i class="mail icon"></i> <span ng-bind="smsSize"></span>
+                        <span class="detail">Messages</span>
+                    </div>
+                </th>
+                <th>
+                    <div class="right aligned">
+                        <a class="ui red label" ng-click="SaveSMS()">
+                            <i class="save icon"></i> Save
+                        </a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody infinite-scroll="increaseLimit()" infinite-scroll-container='"#parent"'>
+            <tr ng-repeat="sms in smsList | limitTo:barLimit">
+                <td ng-bind="sms.phoneNo"></td>
+                <td ng-bind="sms.msg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,138 @@
+.full {
+    height: 100%;
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.h5 {
+    height: 5%;
+}
+
+.h10 {
+    height: 10%;
+}
+
+.h15 {
+    height: 15%;
+}
+
+.h90 {
+    height: 90%;
+}
+
+.h95 {
+    height: 95%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.h20 {
+    height: 20%;
+}
+
+.h30 {
+    height: 30%;
+}
+
+.h25 {
+    height: 25%;
+}
+
+.h40 {
+    height: 40%;
+}
+
+.h50 {
+    height: 50%;
+}
+
+.h60 {
+    height: 60%;
+}
+
+.h65 {
+    height: 65%;
+}
+
+.h70 {
+    height: 70%;
+}
+
+.h75 {
+    height: 75%;
+}
+
+.h80 {
+    height: 80%;
+}
+
+.h85 {
+    height: 85%;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.w40 {
+    width: 40%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w60 {
+    width: 60%;
+}
+
+.w65 {
+    width: 65%;
+}
+
+.w70 {
+    width: 70%;
+}
+
+.w90 {
+    width: 90%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.highlight {
+    background-color: #9E9E9E;
+}
+
+body,
+html {
+    padding: 0px 10px;
+}
+
+.nopadding {
+    padding: 0px;
+}
+
+.log {
+    font-size: 12px;
+    font-family: Courier New, Courier, monospace
+}
+
+.draggable {
+    -webkit-app-region: drag;
+}
+
+.notDraggable {
+    -webkit-app-region: no-drag;
+}

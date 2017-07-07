@@ -1,0 +1,33 @@
+{
+    "main": "./app/main.js",
+    "devDependencies": {
+        "electron": "1.6.11"
+    },
+    "license": "GNU GPLv3",
+    "build": {
+        "appId": "Ahmyth.android.rat",
+        "win": {
+	    "publisherName" : "AhMyth",
+            "icon": "build/icon.ico"
+        },
+        "asarUnpack": "**/app/Factory/**/*"
+    },
+    "scripts": {
+        "start": "electron ./app",
+        "clean": "rm -rf ./dist",
+        "pack": "npm run pack:linux32 && npm run pack:linux64  && npm run pack:win32 && npm run pack:win64",
+        "pack:linux32": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=ia32  --electron-version=1.6.11 --overwrite",
+        "pack:linux64": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=x64 --asar=true --electron-version=1.6.11 --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
+        "pack:win32": "electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=ia32  --electron-version=1.6.11 --icon=assets/win/icon.ico --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
+        "pack:win64": "electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=x64  --electron-version=1.6.11 --icon=assets/win/icon.ico --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
+        "build": "npm run build:linux && npm run build:win",
+        "build:linux": "npm run build:linux32 && npm run build:linux64",
+        "build:linux32": "build --linux deb --ia32",
+        "build:linux64": "build --linux deb --x64",
+        "build:win": "npm run build:win32 && npm run build:win64",
+        "build:win32": "build --win --ia32",
+        "build:win64": "build --win --x64"
+
+    }
+
+}

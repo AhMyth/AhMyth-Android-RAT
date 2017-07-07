@@ -1,0 +1,28 @@
+<div class="ui segment h100">
+    <div class="ui grid center aligned h100">
+        <div class="row h30">
+            <div class="column">
+                <div class="ui right floated labeled input">
+                    <div class="ui label">
+                        Seconds
+                    </div>
+                    <input type="text" ng-model="sec" placeholder="">
+                </div>
+                <button class="ui labeled icon black button" ng-click="Record(sec)"><i class="photo icon"></i>Record</button>
+            </div>
+        </div>
+        <div class="row  h70">
+            <div class="column h100">
+                <div class="ui segment">
+                    <audio controls id="player">
+                   <source src="" id="sourceMp3" type="audio/mp3">
+                      Not Supported.
+                </audio>
+                    <br>
+                    <br>
+                    <button class="ui red button" ng-click="SaveAudio()" ng-disabled="isAudio"><i class="save icon" ></i>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

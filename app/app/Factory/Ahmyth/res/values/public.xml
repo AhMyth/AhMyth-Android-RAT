@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="mipmap" name="ic_launcher" id="0x7f020000" />
+    <public type="layout" name="activity_main" id="0x7f030000" />
+    <public type="dimen" name="activity_horizontal_margin" id="0x7f040000" />
+    <public type="dimen" name="activity_vertical_margin" id="0x7f040001" />
+    <public type="color" name="colorAccent" id="0x7f050000" />
+    <public type="color" name="colorPrimary" id="0x7f050001" />
+    <public type="color" name="colorPrimaryDark" id="0x7f050002" />
+    <public type="string" name="app_name" id="0x7f060000" />
+    <public type="style" name="AppTheme" id="0x7f070000" />
+    <public type="id" name="activity_main" id="0x7f080000" />
+    <public type="id" name="camera_preview" id="0x7f080001" />
+    <public type="id" name="btnCapture" id="0x7f080002" />
+</resources>

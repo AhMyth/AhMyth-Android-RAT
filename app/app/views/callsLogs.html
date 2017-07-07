@@ -1,0 +1,38 @@
+<div class="ui {{load}} segment h100" style="overflow: scroll;" id="parent">
+    <table class="ui  very compact striped table full">
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <div class="ui label">
+                        <i class="mail icon"></i> <span ng-bind="logsSize"></span>
+                        <span class="detail">Logs</span>
+                    </div>
+                </th>
+
+                <th colspan="2">
+                    <div class="right aligned">
+                        <a class="ui red label" ng-click="SaveCalls()">
+                            <i class="save icon"></i> Save
+                        </a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody infinite-scroll="increaseLimit()" infinite-scroll-container='"#parent"'>
+            <tr ng-repeat="call in callsList | limitTo:barLimit">
+                <td ng-bind="call.phoneNo"></td>
+                <td>
+                    <span ng-if="call.name==null">Unknown</span>
+                    <span ng-if="call.name!=null" ng-bind="call.name"></span>
+                </td>
+                <td ng-bind="call.duration"></td>
+                <td>
+                    <span ng-if="call.type==1">INCOMING</span>
+                    <span ng-if="call.type!=1">OUTGOING</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

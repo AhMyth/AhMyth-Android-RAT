@@ -1,0 +1,5 @@
+.DS_STORE
+node_modules/
+test.js
+gulpfile.js
+npm-debug.log

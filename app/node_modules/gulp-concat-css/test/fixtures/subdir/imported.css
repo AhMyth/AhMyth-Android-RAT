@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Font';
+    src: url('../lib/fonts/webfont.eot');
+}
+
+@import url("../vendor/importedRecursive.css");
+
+.navbar-header:after {
+    clear: both;
+    background: url(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/) no-repeat left center;
+}
+@media (min-width: 768px) {
+    .navbar-header {
+      background: url('data:image/png;base64,iVBORwJggg==') no-repeat scroll 100% 50% rgba(0, 0, 0, 0);
+      float: left;
+    }
+}

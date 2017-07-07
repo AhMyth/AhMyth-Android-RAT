@@ -1,0 +1,20 @@
+<div class="ui {{load}} basic segment h100 ">
+    <div class="ui grid center aligned h100">
+        <div class="row h20">
+            <div class="sixteen wide column">
+                <select class="ui dropdown" ng-options="item.name for item in cameras" ng-model="selectedCam"></select>
+                <button class="ui labeled icon black button" ng-click="snap()"><i class="photo icon"></i>Snap</button>
+            </div>
+        </div>
+        <div class="row h80">
+            <div class="sixteen wide column h100">
+                <div class="ui h100 w100 image ">
+                    <a class="ui red ribbon label" ng-show="isSaveShown" ng-click="savePhoto()">
+                        <i class="save icon"></i> Save
+                    </a>
+                    <img style="height: 100%; width: 100%;" src="./assets/img/imageHolder.png" ng-src="{{imgUrl}}"></img>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

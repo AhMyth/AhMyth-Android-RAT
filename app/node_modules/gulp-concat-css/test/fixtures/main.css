@@ -1,0 +1,7 @@
+@import url('subdir/imported.css');
+
+@font-face {
+    font-family: 'Font';
+    src: url('lib/fonts/webfont.eot?v=4.0.0');
+    src: url('lib/fonts/webfont.eot');
+}

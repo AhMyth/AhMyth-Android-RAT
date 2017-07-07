@@ -1,0 +1,10 @@
+{
+  "options": {
+    "autoRename": true,
+    "processUrls": true,
+    "greedy": true,
+    "stringMap": []
+  },
+  "plugins": [],
+  "map": true // used by CLI
+}
