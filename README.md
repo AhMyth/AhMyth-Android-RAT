@@ -45,3 +45,6 @@ It consists of two parts :
 </a></p>
 
 
+---------------------------------------------------------------
+###### Twitter : <a href="https://twitter.com/AhMythDev"> @AhMythDev </a>
+###### Bitcoin address for donations:  : 1EVwLuwmbsEuej7qJnNquFeQJLsgd2b8Lq
