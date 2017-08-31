@@ -84,6 +84,10 @@
 
     sget-object v4, Landroid/os/Build;->MODEL:Ljava/lang/String;
 
+    invoke-static {v4}, Landroid/net/Uri;->encode(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
