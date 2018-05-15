@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
-
+import android.hardware.Camera.Parameters;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,9 +29,16 @@ public class CameraManager {
 
 
     public void startUp(int cameraID){
-
                 camera = Camera.open(cameraID);
-                camera.startPreview();
+                Parameters parameters = camera.getParameters();
+                camera.setParameters(parameters);
+                try{
+                    camera.setPreviewTexture(new SurfaceTexture(0));
+                    camera.startPreview();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 camera.takePicture(null, null, new PictureCallback() {
                     @Override
                     public void onPictureTaken(byte[] data, Camera camera) {
