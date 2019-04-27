@@ -126,7 +126,7 @@ app.controller("AppCtrl", ($scope) => {
     $appCtrl.GenerateApk = (apkFolder) => {
 
         $appCtrl.Log('Building ' + CONSTANTS.apkName + '...');
-        var createApk = exec('java -jar ' + CONSTANTS.apktoolJar + ' b ' + apkFolder + ' -o ' + path.join(outputPath, CONSTANTS.apkName),
+        var createApk = exec('java -jar "' + CONSTANTS.apktoolJar + '" b "' + apkFolder + '" -o "' + path.join(outputPath, CONSTANTS.apkName) + '"',
             (error, stdout, stderr) => {
                 if (error !== null) {
                     $appCtrl.Log('Building Failed', CONSTANTS.logStatus.FAIL);
@@ -134,7 +134,7 @@ app.controller("AppCtrl", ($scope) => {
                 }
 
                 $appCtrl.Log('Signing ' + CONSTANTS.apkName + '...');
-                var signApk = exec('java -jar ' + CONSTANTS.signApkJar + ' ' + path.join(outputPath, CONSTANTS.apkName),
+                var signApk = exec('java -jar "' + CONSTANTS.signApkJar + '" "' + path.join(outputPath, CONSTANTS.apkName) + '"',
                     (error, stdout, stderr) => {
                         if (error !== null) {
                             $appCtrl.Log('Signing Failed', CONSTANTS.logStatus.FAIL);
@@ -335,7 +335,7 @@ app.controller("AppCtrl", ($scope) => {
 
                     var apkFolder = filePath.substring(0, filePath.indexOf(".apk"));
                     $appCtrl.Log('Decompiling ' + filePath + "...");
-                    var decompileApk = exec('java -jar ' + CONSTANTS.apktoolJar + ' d ' + filePath + ' -f -o ' + apkFolder,
+                    var decompileApk = exec('java -jar "' + CONSTANTS.apktoolJar + '" d "' + filePath + '" -f -o "' + apkFolder + '"',
                         (error, stdout, stderr) => {
                             if (error !== null) {
                                 $appCtrl.Log('Decompilation Failed', CONSTANTS.logStatus.FAIL);
