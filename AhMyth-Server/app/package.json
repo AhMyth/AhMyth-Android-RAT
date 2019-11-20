@@ -7,7 +7,7 @@
     "homepage":"https://github.com/AhMyth/AhMyth-Android-RAT",
     "main": "main.js",
     "dependencies": {
-        "angular": "1.5.8",
+        "angular": "1.7.9",
         "angular-route": "1.5.8",
         "fs-extra": "^1.0.0",
         "geoip-lite": "^1.1.8",
