@@ -31,8 +31,67 @@ Este proyecto consiste de dos partes
 + Esto fue probado en el siguiente ambiente
 	+ Debian 10
 	+ javac 8
+	+ Node 10
+	+ NPM
 
+```
+# Instalando dependencias del proyecto
+sudo apt install -y nodejs npm git curl libgconf-2-4
 
+# Instalando java 8
+sudo apt istall -y wget gnupg software-properties-common
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+sudo apt update -y
+sudo apt install adoptopenjdk-8-hotspot -y
+
+sudo update-alternatives --config java
+# Aquí selecciona la que tenga el "8"
+
+git clone https://github.com/elcaza/AhMyth-Android-RAT
+cd AhMyth-Android-RAT/AhMyth-Server/
+npm install 
+npm start
+```
+
+## Estructura del proyecto
+Web Server
++ app/
+	+ app/
+		+ assets
+			+ css
+			+ img
+			+ js
+				+ controllers 
+					+ AppCtrl.js **(App principal)**
+					+ LabCtrl.js **(Ventana secundaria de la victicma)**
+					+ AppCtrl.js **(Notificaciones emergentes)**
+				+ lib **(Librerías)**
+				+ model **(Clase victima)**
+		+ Factory **(Archivos para la compilación)**
+		+ views **(Vistas de cada sección del código)**
+		+ files.html
+	+ node_modules/ 
+	+ main.js **(Archivo main que despliega todo el server)**
+	+ package.json 
+
+Cliente
++ main/
+	+ java **(Toda la estructura de clases)**
+		+ CallManager.java **(Llamadas)**
+		+ CameraManager.java **(Cámara)**
+		+ ConnectionManager.java **(Sockets)**
+		+ ContactsManager.java **(Contactos)**
+		+ FileManager.java **(Archivos)**
+		+ IOSocket.java **(Sockets)**
+		+ LocManager.java **(Localización)**
+		+ MainActivity.java **(Main Activity)**
+		+ MainService.java **(Main Service)**
+		+ MicManager.java **(Micrófono)**
+		+ MyReceiver.java **(Sockets)**
+		+ SMSManager.java **(Mensajes)**
+	+ res 
+	+ AndroidManifest.xml
 
 
 ## Screenshots
@@ -58,7 +117,6 @@ Este proyecto consiste de dos partes
 <a href="https://www.youtube.com/watch?v=DDIZTABABzs">
 	<img src="https://img.youtube.com/vi/DDIZTABABzs/0.jpg" width="600"/>
 </a></p>
-
 
 ---------------------------------------------------------------
 ##### I will not be responsible for any direct or indirect damage caused due to the usage of this tool, it is for educational purposes only.
