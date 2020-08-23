@@ -20,6 +20,9 @@ jobs:
           AhMyth-Server
     runs-on: ubuntu-latest
     steps:
+      - name: Install apt dependencies (need for Windows build)
+        run: |
+          apt update && sudo apt-get install --no-install-recommends -y wine mono gcc-multilib g++-multilib
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3
