@@ -45,9 +45,8 @@ jobs:
             ${{ runner.os }}-electron-builder-cache-
 
       - name: Install apt dependencies (need for Windows build)
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y wine mono gcc-multilib g++-multilib || true
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y wine mono gcc-multilib g++-multilib || true
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3
