@@ -16,11 +16,6 @@
     "scripts": {
         "start": "npx electron ./app",
         "clean": "rm -rf ./dist",
-        "pack": "npm run pack:linux32 && npm run pack:linux64  && npm run pack:win32 && npm run pack:win64",
-        "pack:linux32": "npx electron-builder --dir ./app --out=dist/ --platform=linux --arch=ia32",
-        "pack:linux64": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=x64 --asar=true",
-        "pack:win32": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=ia32 --icon=assets/win/icon.ico",
-        "pack:win64": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=x64  --icon=assets/win/icon.ico",
         "build": "npm run build:linux && npm run build:win",
         "build:linux": "npm run build:linux32 && npm run build:linux64",
         "build:linux32": "npx electron-builder --linux deb --ia32",
