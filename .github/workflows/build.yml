@@ -44,10 +44,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-electron-builder-cache-
       - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
       - name: Install deps
-        run: sudo apt-get install --no-install-recommends -y wine32 wine64 gcc-multilib g++-multilib || true
+        run: |
+          sudo dpkg --add-architecture i386 
+          sudo apt update
+          sudo apt install --no-install-recommends -y wine32 wine64 gcc-multilib g++-multilib
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3
@@ -68,4 +69,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: AhMyth
-          path: /dist/
+          path: ./AhMyth-Server/dist/
