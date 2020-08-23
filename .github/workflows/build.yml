@@ -43,7 +43,9 @@ jobs:
           key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
           restore-keys: |
             ${{ runner.os }}-electron-builder-cache-
-
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v2
       - name: Install deps
         run: sudo apt-get install --no-install-recommends -y wine mono gcc-multilib g++-multilib || true
       - uses: actions/checkout@v2
