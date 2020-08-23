@@ -13,7 +13,7 @@
         "asarUnpack": "**/app/Factory/**/*"
     },
     "scripts": {
-        "start": "electron ./app",
+        "start": "npx electron ./app",
         "clean": "rm -rf ./dist",
         "pack": "npm run pack:linux32 && npm run pack:linux64  && npm run pack:win32 && npm run pack:win64",
         "pack:linux32": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=ia32  --electron-version=1.6.11 --overwrite",
