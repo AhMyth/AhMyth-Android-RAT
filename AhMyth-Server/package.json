@@ -1,33 +1,33 @@
 {
     "main": "./app/main.js",
     "devDependencies": {
-        "electron": "1.6.11"
+        "electron": "^9.2.0",
+        "electron-builder": "^22.8.0"
     },
     "license": "GNU GPLv3",
     "build": {
         "appId": "Ahmyth.android.rat",
         "win": {
-	    "publisherName" : "AhMyth",
+            "publisherName": "AhMyth",
             "icon": "build/icon.ico"
         },
         "asarUnpack": "**/app/Factory/**/*"
     },
     "scripts": {
-        "start": "electron ./app",
+        "start": "npx electron ./app",
         "clean": "rm -rf ./dist",
         "pack": "npm run pack:linux32 && npm run pack:linux64  && npm run pack:win32 && npm run pack:win64",
-        "pack:linux32": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=ia32  --electron-version=1.6.11 --overwrite",
-        "pack:linux64": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=x64 --asar=true --electron-version=1.6.11 --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
-        "pack:win32": "electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=ia32  --electron-version=1.6.11 --icon=assets/win/icon.ico --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
-        "pack:win64": "electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=x64  --electron-version=1.6.11 --icon=assets/win/icon.ico --overwrite --download.mirror=https://npm.taobao.org/mirrors/electron/",
+        "pack:linux32": "npx electron-builder --dir ./app --out=dist/ --platform=linux --arch=ia32",
+        "pack:linux64": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=x64 --asar=true",
+        "pack:win32": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=ia32 --icon=assets/win/icon.ico",
+        "pack:win64": "npx electron-packager ./app $npm_package_name --out=dist/ --platform=win32 --arch=x64  --icon=assets/win/icon.ico",
         "build": "npm run build:linux && npm run build:win",
         "build:linux": "npm run build:linux32 && npm run build:linux64",
-        "build:linux32": "build --linux deb --ia32",
-        "build:linux64": "build --linux deb --x64",
+        "build:linux32": "npx electron-builder --linux deb --ia32",
+        "build:linux64": "npx electron-builder --linux deb --x64",
         "build:win": "npm run build:win32 && npm run build:win64",
-        "build:win32": "build --win --ia32",
-        "build:win64": "build --win --x64"
-
-    }
-
+        "build:win32": "npx electron-builder --win --ia32",
+        "build:win64": "npx electron-builder --win --x64"
+    },
+    "dependencies": {}
 }
