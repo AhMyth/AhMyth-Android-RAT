@@ -1,1 +1,43 @@
 
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: 
+      - master
+      - development
+  release:
+    types: [created]
+jobs:
+  build:
+    defaults:   
+      run:     
+        working-directory: 
+          AhMyth-Server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          node-version: 10.x
+      - name: Install dependencies
+        run: |
+          npm i
+      - name: Build Linux app (32 bit)
+        run: npm run build:linux32
+      - name: Build Linux app (64 bit)
+        run: npm run build:linux64
+      - name: Build Windows App (32 bit)
+        run: npm run build:win32
+      - name: Build Windows App (64 bit)
+        run: npm run build:win64
+      - name: Upload - push to artifact files
+        uses: actions/upload-artifact@v1
+        with:
+          name: AhMyth
+          path: /dist/
