@@ -47,8 +47,8 @@ jobs:
       - name: Install deps
         run: |
           sudo dpkg --add-architecture i386 
-          sudo apt update
-          sudo apt install --no-install-recommends -y wine32 wine64 gcc-multilib g++-multilib
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y wine32 wine64 gcc-multilib g++-multilib
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v1.4.3
