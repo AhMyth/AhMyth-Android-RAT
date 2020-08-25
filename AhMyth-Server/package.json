@@ -1,7 +1,10 @@
 {
     "main": "./app/main.js",
     "devDependencies": {
-        "electron": "1.6.11"
+        "electron": "1.6.11",
+        "eslint": "^7.7.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-plugin-import": "^2.22.0"
     },
     "license": "GNU GPLv3",
     "build": {
@@ -13,7 +16,9 @@
         "asarUnpack": "**/app/Factory/**/*"
     },
     "scripts": {
-        "start": "electron ./app",
+        "start": "npx electron ./app",
+        "lint": "npx eslint ./app",
+        "lint:fix": "npx eslint ./app --fix --ignore-pattern *.min.*",
         "clean": "rm -rf ./dist",
         "pack": "npm run pack:linux32 && npm run pack:linux64  && npm run pack:win32 && npm run pack:win64",
         "pack:linux32": "electron-packager ./app $npm_package_name --out=dist/ --platform=linux --arch=ia32  --electron-version=1.6.11 --overwrite",
@@ -24,10 +29,7 @@
         "build:linux": "npm run build:linux32 && npm run build:linux64",
         "build:linux32": "build --linux deb --ia32",
         "build:linux64": "build --linux deb --x64",
-        "build:win": "npm run build:win32 && npm run build:win64",
-        "build:win32": "build --win --ia32",
-        "build:win64": "build --win --x64"
-
+        "build:win": "npm run build:win32 && npm run build:win64"
     }
 
 }
