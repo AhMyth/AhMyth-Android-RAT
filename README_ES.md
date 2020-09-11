@@ -39,7 +39,7 @@ Este proyecto consiste de dos partes
 sudo apt install -y nodejs npm git curl libgconf-2-4
 
 # Instalando java 8
-sudo apt istall -y wget gnupg software-properties-common
+sudo apt install -y wget gnupg software-properties-common
 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 sudo apt update -y
