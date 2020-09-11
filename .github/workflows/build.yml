@@ -1,0 +1,72 @@
+
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches:
+      - feature/githubActionsBuild 
+      - master
+      - development
+  release:
+    types: [created]
+jobs:
+  build:
+    defaults:   
+      run:     
+        working-directory: 
+          AhMyth-Server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Cache Electron
+        uses: actions/cache@v1
+        with:
+          path: ${{ github.workspace }}/.cache/electron
+          key: ${{ runner.os }}-electron-cache-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+          restore-keys: |
+            ${{ runner.os }}-electron-cache-
+
+      - name: Cache Electron-Builder
+        uses: actions/cache@v1
+        with:
+          path: ${{ github.workspace }}/.cache/electron-builder
+          key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+          restore-keys: |
+            ${{ runner.os }}-electron-builder-cache-
+      - uses: actions/checkout@v2
+      - name: Install deps
+        run: |
+          sudo dpkg --add-architecture i386 
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y wine32 wine64 gcc-multilib g++-multilib
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          node-version: 10.x
+      - name: Install dependencies
+        run: |
+          npm i
+      - name: Build Linux app (32 bit)
+        run: npm run build:linux32
+      - name: Build Linux app (64 bit)
+        run: npm run build:linux64
+      - name: Build Windows App (32 bit)
+        run: npm run build:win32
+      - name: Build Windows App (64 bit)
+        run: npm run build:win64
+      - name: Upload - push to artifact files
+        uses: actions/upload-artifact@v1
+        with:
+          name: AhMyth
+          path: ./AhMyth-Server/dist/
