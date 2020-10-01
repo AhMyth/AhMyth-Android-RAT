@@ -20,6 +20,7 @@ It consists of two parts :
 ###### Prerequisite :
 * Download a binary from https://github.com/AhMyth/AhMyth-Android-RAT/releases
 * Java (to generate apk backdoor)
+* Python (to generate apk backdoor)
 
 ## Screenshots
 <p align="center">
