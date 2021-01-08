@@ -24,8 +24,10 @@ public class MainActivity extends Activity {
     
 
     private void fn_hideicon() {
-        getPackageManager().setComponentEnabledSetting(getComponentName(),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
+            PackageManager pm = getPackageManager();
+        ComponentName cm = new ComponentName(MainActivity.this,MainActivity.class);
+        pm.setComponentEnabledSetting(cm,
+                pm.COMPONENT_ENABLED_STATE_DISABLED,
+                pm.DONT_KILL_APP
     }
 }
