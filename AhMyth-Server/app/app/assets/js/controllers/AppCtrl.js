@@ -100,23 +100,26 @@ app.controller("AppCtrl", ($scope) => {
 
 
     // function to open the dialog and choose apk to be bindded
-    $appCtrl.BrowseApk = () => {
-        dialog.showOpenDialog(function(fileNames) {
-            // fileNames is an array that contains all the selected
-            if (fileNames === undefined) {
+     $appCtrl.BrowseApk = () => {
+        dialog.showOpenDialog({}, {
+            properties: ['openFile']
+        }).then(result => {
+            if(result.canceled) {
                 $appCtrl.Log("No file selected");
             } else {
-                $appCtrl.Log("File choosen  " + fileNames[0]);
-                readFile(fileNames[0]); // read the file
+                $appCtrl.Log("File choosen  " + result.filePaths[0]);
+                readFile(result.filePaths[0]);
             }
-        });
+        }).catch(() => {
+            $appCtrl.Log("No file selected");
+        })
 
         function readFile(filepath) {
             $appCtrl.filePath = filepath;
             $appCtrl.$apply();
         }
-
     }
+
 
 
 
