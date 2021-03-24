@@ -10,11 +10,12 @@ It consists of two parts :
 #### 1) From source code
 ###### Prerequisite :
 * Electron (to start the app)
-* Java (to generate apk backdoor)
+* Openjdk-8-jdk/Java (to generate apk backdoor)
 * Electron-builder and electron-packer (to build binaries for (OSX,WINDOWS,LINUX))
 1. ```git clone https://github.com/AhMyth/AhMyth-Android-RAT.git```
 2. ```cd AhMyth-Android-RAT/AhMyth-Server```
-3. ```npm start```
+3. ```npm install && npm audit fix```
+4. ```npm start```
 
 #### 2) From binaries
 ###### Prerequisite :
