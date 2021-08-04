@@ -36,7 +36,9 @@ function createWindow() {
     toolbar: false,
     fullscreen: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+	  enableRemoteModule: true,
+	  contextIsolation: false
     }
   });
 
@@ -70,7 +72,9 @@ function createWindow() {
     transparent: true,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+	  enableRemoteModule: true,
+	  contextIsolation: false
     }
   });
 
@@ -158,7 +162,9 @@ ipcMain.on('SocketIO:Listen', function (event, port) {
       resizable: false,
       toolbar: false,
       webPreferences: {
-        nodeIntegration: true
+		  nodeIntegration: true,
+		  enableRemoteModule: true,
+		  contextIsolation: false
       }
     });
 
@@ -223,7 +229,9 @@ ipcMain.on('openLabWindow', function (e, page, index) {
     resizable: false,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+	  enableRemoteModule: true,
+	  contextIsolation: false
     }
   })
 
